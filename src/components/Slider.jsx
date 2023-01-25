@@ -1,12 +1,12 @@
-import {React, useState, useEffect } from 'react'
+import {React, useState, useEffect, useCallback } from 'react'
 import data from '../data'
 import Slide from './Slide'
 
 export default function Slider() {
-    const [slides, setSlides] = useState(data);
+    const [slides] = useState(data);
     const [activeIndex, setActiveIndex] = useState(0);
 
-    const goNext = () => {
+    const goNext = useCallback(() => {
         if (activeIndex < slides.length - 1)
             setActiveIndex((oldValue) => {
                 return oldValue + 1;
@@ -14,7 +14,7 @@ export default function Slider() {
         else {
             setActiveIndex(0)
         }
-    }
+    },[activeIndex, slides.length])
 
     const goPrev = () => {
         if (activeIndex > 0)
@@ -33,7 +33,7 @@ export default function Slider() {
         return () => {
             clearTimeout(timer)
         }
-    }, [activeIndex])
+    }, [activeIndex, goNext])
     
     return (
         <div className='slider'>
