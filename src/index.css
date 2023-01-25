@@ -16,10 +16,6 @@ code {
   --transition: all 0.3s linear;
 }
 
-*{
-  outline: 1px solid red;
-}
-
 .slider {
   display: flex;
   display: -moz-flex;
