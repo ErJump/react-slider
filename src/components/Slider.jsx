@@ -7,23 +7,15 @@ export default function Slider() {
     const [activeIndex, setActiveIndex] = useState(0);
 
     const goNext = useCallback(() => {
-        if (activeIndex < slides.length - 1)
-            setActiveIndex((oldValue) => {
-                return oldValue + 1;
-            })
-        else {
-            setActiveIndex(0)
-        }
-    },[activeIndex, slides.length])
+        setActiveIndex((oldValue) => {
+            return (oldValue + 1) % slides.length;
+        })
+    },[slides.length])
 
     const goPrev = () => {
-        if (activeIndex > 0)
-            setActiveIndex((oldValue) => {
-                return oldValue - 1;
-            })
-        else {
-            setActiveIndex(slides.length - 1)
-        }
+        setActiveIndex((oldValue) => {
+            return (oldValue - 1) % slides.length;
+        }) 
     }
 
     useEffect(() => {
