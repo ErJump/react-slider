@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+:root {
+  --transition: all 0.3s linear;
+}
+
 *{
   outline: 1px solid red;
 }
@@ -45,9 +49,6 @@ code {
   display: -webkit-grid;
   gap: 0.7rem;
   padding: 0.5rem;
-  background-color: var(--soft-dark);
-  border-radius: var(--btn-radius);
-  box-shadow: var(--dark-shadow);
 }
 
 .star-container {
@@ -78,4 +79,8 @@ code {
 .active {
   transform: translate(-50%, 0%);
   opacity: 1;
+}
+
+div.container-lg{
+  min-height: 100vh;
 }
