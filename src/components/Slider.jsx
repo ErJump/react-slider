@@ -6,6 +6,27 @@ export default function Slider() {
     const [slides, setSlides] = useState(data);
     const [activeIndex, setActiveIndex] = useState(0);
 
+    const goNext = () => {
+        if (activeIndex < slides.length - 1)
+            setActiveIndex((oldValue) => {
+                return oldValue + 1;
+            })
+        else {
+            setActiveIndex(0)
+        }
+    }
+
+    const goPrev = () => {
+        if (activeIndex > 0)
+            setActiveIndex((oldValue) => {
+                return oldValue - 1;
+            })
+        else {
+            setActiveIndex(slides.length - 1)
+        }
+    }
+
+
     return (
         <div className='slider'>
             {
@@ -18,12 +39,14 @@ export default function Slider() {
                     } else {
                         classP = "next";
                     }
-                    
                     return (
-
                     <Slide key={slide.id} slide={slide} classP={classP}/>
                 )})
             }
+            <div className='w-100 d-flex justify-content-between align-items-end'>
+                <button className='btn btn-primary' onClick={goPrev}>Prev</button>
+                <button className='btn btn-primary' onClick={goNext}>Next</button>
+            </div>
         </div>
     )
 }
