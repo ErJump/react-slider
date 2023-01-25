@@ -26,7 +26,15 @@ export default function Slider() {
         }
     }
 
-
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            goNext()
+        }, 5000)
+        return () => {
+            clearTimeout(timer)
+        }
+    }, [activeIndex])
+    
     return (
         <div className='slider'>
             {
